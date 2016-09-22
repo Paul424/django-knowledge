@@ -45,8 +45,7 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey('auth.User' if django.VERSION < (1, 5, 0) else django_settings.AUTH_USER_MODEL, blank=True,
-                             null=True, db_index=True)
+    user = models.ForeignKey(django_settings.AUTH_USER_MODEL, blank=True, null=True, db_index=True)
     alert = models.BooleanField(default=settings.ALERTS,
         verbose_name=_('Alert'),
         help_text=_('Check this if you want to be alerted when a new'
